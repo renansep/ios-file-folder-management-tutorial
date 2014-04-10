@@ -22,10 +22,17 @@
     return sharedInstance;
 }
 
--(id)initPrivado {
+- (id)initPrivado
+{
     self = [super init];
-    if(self) {
-        // TODO recuperar as receitas do arquivo
+    if (self)
+    {
+        NSFileManager *fileManager = [[NSFileManager alloc] init];
+        NSArray *urls = [fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+        NSString *docs = [urls firstObject];
+        NSString *file = [docs stringByAppendingPathComponent:@"Receitas"];
+        receitas = [NSKeyedUnarchiver unarchiveObjectWithFile:file];
+        current = 0;
     }
     return self;
 }
@@ -46,6 +53,11 @@
     } else {
         current++;
     }
+    return [receitas objectAtIndex:current];
+}
+
+- (Receita *)current
+{
     return [receitas objectAtIndex:current];
 }
 

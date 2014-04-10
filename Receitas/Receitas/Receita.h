@@ -8,7 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Receita : NSObject
-// TODO Definir os atributos da receita e permitir que ela seja armazenada em arquivo.
+@interface Receita : NSObject <NSCoding>
+{
+    NSString *nome;
+    NSString *modoDePreparo;
+    NSArray *ingredientes;
+}
+
+@property NSString *nome;
+@property NSString *modoDePreparo;
+@property NSArray *ingredientes;
 
 @end

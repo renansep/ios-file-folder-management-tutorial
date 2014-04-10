@@ -10,4 +10,25 @@
 
 @implementation Receita
 
+@synthesize nome, modoDePreparo, ingredientes;
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self)
+    {
+        self.nome = [aDecoder decodeObjectForKey:@"nome"];
+        self.modoDePreparo = [aDecoder decodeObjectForKey:@"modeDePreparo"];
+        self.ingredientes = [aDecoder decodeObjectForKey:@"ingredientes"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:nome forKey:@"nome"];
+    [aCoder encodeObject:modoDePreparo forKey:@"modoDePreparo"];
+    [aCoder encodeObject:ingredientes forKey:@"ingredientes"];
+}
+
 @end

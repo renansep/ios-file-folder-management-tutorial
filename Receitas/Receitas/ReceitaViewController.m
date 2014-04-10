@@ -18,12 +18,15 @@
     UISwipeGestureRecognizer *swipeLeft;
     UISwipeGestureRecognizer *swipeRight;
     CATransition *transition;
-
+    NSMutableArray *receitas;
+    
 }
 
 @end
 
 @implementation ReceitaViewController
+
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -32,6 +35,9 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
     //cria animacao para mudar receitas
     transition = [CATransition animation];
     transition.duration = 0.5f;
@@ -104,7 +110,7 @@
 
 - (void)update
 {
-    // TODO atualizar a view com a receita atual
+    nome.text = [[ReceitaStore sharedInstance] current].nome;
 }
 
 
